@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the admin-upload.html file for Phil's Fish Market, this is where the admin can upload products in bulk.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Upload - Phil's Fish Market</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Stylesheet -->
+    <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="images/4469206.png" type="image/x-icon">
+    <script src="cart.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Phil's Fish Market</h1>
+        <div class="nav-container"> 
+            <nav>
+                <ul class="nav-bar">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="admin-upload.html">Upload</a></li>
+                    <li><a href="admin-products.html">Products</a></li>
+                    <li><a href="product-edit.html">Product-Edit</a></li> 
+            </nav>
+        </div>
+        <div class="search-bar-container">
+            <input type="text" placeholder="Search...">
+            <button type="button">
+                <img src="images/image.png" alt="Search Icon">
+            </button>
+        </div>
+    </header>
+    <main>
+        <section class="upload">
+            <h1>Upload bulk product data</h1>
+            <p>Make sure the file is in JSON or CSV format.</p>
+
+            <div class="upload-icon">
+                <img src="images/upload.png">
+            </div>
+
+            <button>Submit</button>
+        </section>
+    </main>
+    <footer>
+        <p>2025 Phil's Fish Market. All rights reserved.</p>
+        <p>Contact us: contact@philsfishmarket.com</p>
+    </footer>
+</body>
+</html>

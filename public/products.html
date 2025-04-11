@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the products.html file for Phil's Fish Market, this lists the products for the user.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phil's Fish Market</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Stylesheet -->
+    <link rel="icon" href="images/4469206.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Phil's Fish Market</h1>
+        <div class="nav-container"> <!-- Nav links go in here -->
+            <nav>
+                <ul class="nav-bar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="admin-upload.html">Admin View</a></li> <!-- I'll set this to the login page once I make it-->
+                </ul>
+            </nav>
+        </div>
+        <div class="search-bar-container">
+            <input type="text" placeholder="Search...">
+            <button type="button">
+                <img src="images/image.png">
+            </button>
+        </div>
+    </header>
+    <main>
+        <section class="hero"> <!-- Section with the welcome message and slogan (along with 2 crabs)-->
+            <img src="images/crab.gif" class="hero-img-left">
+            <div class="hero-text">
+                <h2>Products</h2>
+                <p>Browse our fine selection of fresh fish</p>
+            </div>
+            <img src="images/crab.gif" alt="Fish Market" class="hero-img-right">
+        </section>
+        <section class="trending">
+            <h2>Best-Selling</h2>
+        </section>
+        <section class="grid-container"> <!-- I mapped the links to details instead of "#" to make it easier to grade-->
+            <div class="grid-item">
+                <img src="images/SALCTR.png">
+                <h3><a href="details.html">Salmon</a></h3>
+                <p>$10.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="grid-item">
+                <img src="images/SALCTR.png">
+                <h3><a href="details.html">Salmon</a></h3>
+                <p>$10.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="grid-item">
+                <img src="images/SALCTR.png">
+                <h3><a href="details.html">Salmon</a></h3>
+                <p>$10.00</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+        <section class="trending">
+            <h2>Trending</h2>
+        </section>
+        <section class="grid-container"> <!-- I mapped the links to details instead of "#" to make it easier to grade-->
+            <div class="grid-item">
+                <img src="images/SALCTR.png">
+                <h3><a href="details.html">Salmon</a></h3>
+                <p>$10.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="grid-item">
+                <img src="images/SALCTR.png">
+                <h3><a href="details.html">Salmon</a></h3>
+                <p>$10.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="grid-item">
+                <img src="images/SALCTR.png">
+                <h3><a href="details.html">Salmon</a></h3>
+                <p>$10.00</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>2025 Phil's Fish Market. All rights reserved.</p>
+        <p>Contact us: contact@philsfishmarket.com</p>
+    </footer>
+</body>
+</html>
