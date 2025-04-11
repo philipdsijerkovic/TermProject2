@@ -23,7 +23,7 @@ function getOneById(id) {
 }
 
 function deleteProduct(id){
-  let sql = "DELETE FROM products WHERE id =?; ";
+  let sql = "DELETE FROM products WHERE products_id =?; ";
   const info = db.run(sql, id);
 return info;
 }
@@ -70,23 +70,24 @@ function updateProduct(productId, params) {
     WHERE products_id = ?;
   `;
   // Default values
-  const {
-    name = null,
-    description = null,
-    image_url = null,
-    price = null,
-    category_id = null,
+  const defaultValues = {
+    products_name = null,
+    products_description = null,
+    products_image_url = null,
+    products_price = null,
+    products_category_id = null,
     featured = null,
   } = params;
   // Run the query
   const data = db.run(sql, [
-    name,
-    description,
-    image_url,
-    price,
-    category_id,
-    featured,
     productId,
+    products_name,
+    products_description,
+    products_image_url,
+    products_price,
+    products_category_id,
+    featured,
+
   ]);
 
   return data; 

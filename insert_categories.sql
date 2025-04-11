@@ -1,4 +1,4 @@
-INSERT INTO categories (name) VALUES
+INSERT INTO categories (categories_name) VALUES
 ('Seafood'),
 ('Freshwater Fish'),
 ('Frozen'),

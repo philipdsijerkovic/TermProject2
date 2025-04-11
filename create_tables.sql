@@ -20,19 +20,19 @@ CREATE TABLE products (
     products_image_url VARCHAR(400),
     products_price DECIMAL(10, 2) NOT NULL,
     products_category_id INTEGER NOT NULL,
-    featured BOOLEAN DEFAULT FALSE,
+    featured BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE carts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     status TEXT CHECK(status IN ('new', 'abandoned', 'purchased')) DEFAULT 'new',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL
 );
 
 CREATE TABLE cart_products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     cart_id INTEGER NOT NULL,
     product_id INTEGER NOT NULL,
-    quantity INTEGER NOT NULL,
+    quantity INTEGER NOT NULL
 );

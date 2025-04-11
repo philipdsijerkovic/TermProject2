@@ -11,7 +11,7 @@ const fishRoutes = require("./routes/fish.route");
 const { db_close } = require("./models/db-conn");
 
 app.use(express.static("public"));
-app.use("/games", fishRoutes);
+app.use("/api", fishRoutes);
 
 app.get("/", (req, res) => {
   res.redirect("/api/all");

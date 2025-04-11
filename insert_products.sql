@@ -1,4 +1,4 @@
-INSERT INTO products (name, description, image_url, price, category_id, featured) VALUES
+INSERT INTO products (products_name, products_description, products_image_url, products_price, products_category_id, featured) VALUES
 ('Atlantic Salmon', 'Fresh Atlantic salmon with tender flakes.', 'images/salmon.png', 10.00, 1, TRUE),
 ('Bluefin Tuna', 'Fresh bluefin tuna, the most famous fish for sushi.', 'images/tuna.png', 20.00, 1, FALSE),
 ('Lobster', 'Fresh lobster from Canada', 'images/lobster.png', 25.00, 1, TRUE),
