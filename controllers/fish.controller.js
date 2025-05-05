@@ -51,7 +51,7 @@ function createNew(req, res, next) {
   let image_url = req.body.image_url;
   let price = parseFloat(req.body.price);
   let category_id = parseInt(req.body.category_id);
-  let featured = req.body.featured || false;
+  let featured = req.body.featured ? 1 : 0; // Convert boolean to 1 or 0
 
   if (name && price && category_id) { 
     let params = [name, description || null, image_url || null, price, category_id, featured];

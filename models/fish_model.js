@@ -51,9 +51,9 @@ function checkout() {
 
 function addCart(cartId, productId, quantity) {
   let sql = "INSERT INTO cart_products " +
-    "(cart_id, products_id, quantity) " +
+    "(cart_id, product_id, quantity) " +
     "VALUES(?, ?, ?); ";
-  const data = db.run(sql, cartId, productId, quantity);
+  const data = db.run(sql, [cartId, productId, quantity]);
   return data;
 }
 
