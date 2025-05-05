@@ -1,0 +1,97 @@
+//- 
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the products.pug file for Phil's Fish Market, this lists the products for the user.
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Phil's Fish Market
+    link(rel="stylesheet", href="styles.css")
+    link(rel="icon", href="images/4469206.png", type="image/x-icon")
+  
+  body
+    header
+      h1 Phil's Fish Market
+      .nav-container
+        nav
+          ul.nav-bar
+            li
+              a(href="index.html") Home
+            li
+              a(href="products.html") Products
+            li
+              a(href="cart.html") Cart
+            li
+              a(href="admin-upload.html") Admin View
+      
+      .search-bar-container
+        input(type="text", placeholder="Search...")
+        button(type="button")
+          img(src="images/image.png")
+    
+    main
+      section.hero
+        img.hero-img-left(src="images/crab.gif")
+        .hero-text
+          h2 Products
+          p Browse our fine selection of fresh fish
+        img.hero-img-right(src="images/crab.gif", alt="Fish Market")
+      
+      section.trending
+        h2 Best-Selling
+      
+      section.grid-container
+        .grid-item
+          img(src="images/SALCTR.png")
+          h3
+            a(href="details.html") Salmon
+          p $10.00
+          button Add to Cart
+        
+        .grid-item
+          img(src="images/SALCTR.png")
+          h3
+            a(href="details.html") Salmon
+          p $10.00
+          button Add to Cart
+        
+        .grid-item
+          img(src="images/SALCTR.png")
+          h3
+            a(href="details.html") Salmon
+          p $10.00
+          button Add to Cart
+      
+      section.trending
+        h2 Trending
+      
+      section.grid-container
+        .grid-item
+          img(src="images/SALCTR.png")
+          h3
+            a(href="details.html") Salmon
+          p $10.00
+          button Add to Cart
+        
+        .grid-item
+          img(src="images/SALCTR.png")
+          h3
+            a(href="details.html") Salmon
+          p $10.00
+          button Add to Cart
+        
+        .grid-item
+          img(src="images/SALCTR.png")
+          h3
+            a(href="details.html") Salmon
+          p $10.00
+          button Add to Cart
+    
+    footer
+      p 2025 Phil's Fish Market. All rights reserved.
+      p Contact us: contact@philsfishmarket.com

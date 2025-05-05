@@ -1,0 +1,84 @@
+//- 
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the product-edit.pug file for Phil's Fish Market, this is where an admin edits the fields of a product.
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Admin Products - Phil's Fish Market
+    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="admin.css")
+    link(rel="icon", href="images/4469206.png", type="image/x-icon")
+    script(src="cart.js", defer)
+  
+  body
+    header
+      h1 Phil's Fish Market
+      .nav-container
+        nav
+          ul.nav-bar
+            li
+              a(href="index.html") Home
+            li
+              a(href="admin-upload.html") Upload
+            li
+              a(href="admin-products.html") Products
+            li
+              a(href="product-edit.html") Product-Edit
+      
+      .search-bar-container
+        input(type="text", placeholder="Search...")
+        button(type="button")
+          img(src="images/image.png", alt="Search Icon")
+    
+    main
+      section.products
+        .search-bar-container
+          input(type="text", placeholder="Search...")
+          button(type="button")
+            img(src="images/image.png", alt="Search Icon")
+        
+        h2 Product Edit
+        
+        .product
+          img(src="images/SALCTR.png", alt="Salmon")
+          .product-info
+            p Product ID: 
+              strong 2000
+            h3
+              input(type="text", value="Salmon")
+            p
+              textarea Our Atlantic salmon has a melt-in-your-mouth texture and tender flakes. Caught in Norway and shipped straight to you.
+            p Category: 
+              input(type="text", value="Seafood")
+            p Image Path: 
+              input(type="text", value="add image here...")
+            button Save
+            button Delete
+            button Archive
+        
+        .product
+          img(src="images/SALCTR.png", alt="Salmon")
+          .product-info
+            p Product ID: 
+              strong 2000
+            h3
+              input(type="text", value="Salmon")
+            p
+              textarea Our Atlantic salmon has a melt-in-your-mouth texture and tender flakes. Caught in Norway and shipped straight to you.
+            p Category: 
+              input(type="text", value="Seafood")
+            p Image Path: 
+              input(type="text", value="add image here...")
+            button Save
+            button Delete
+            button Archive
+    
+    footer
+      p 2025 Phil's Fish Market. All rights reserved.
+      p Contact us: contact@philsfishmarket.com

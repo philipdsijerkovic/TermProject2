@@ -1,0 +1,89 @@
+//- 
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the cart.pug file for Phil's Fish Market, this is where the user can view their cart.
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Cart - Phil's Fish Market
+    link(rel="stylesheet", href="styles.css")
+    link(rel="icon", href="images/4469206.png", type="image/x-icon")
+    script(src="cart.js", defer)
+  
+  body
+    header
+      h1 Phil's Fish Market
+      .nav-container
+        nav
+          ul.nav-bar
+            li
+              a(href="index.html") Home
+            li
+              a(href="products.html") Products
+            li
+              a(href="cart.html") Cart
+            li
+              a(href="admin-upload.html") Admin View
+      
+      .search-bar-container
+        input(type="text", placeholder="Search...")
+        button(type="button")
+          img(src="images/image.png", alt="Search Icon")
+    
+    main
+      section.cart
+        h2 Your Shopping Cart
+        
+        .cart-item
+          img(src="images/SALCTR.png", alt="Salmon")
+          .cart-item-info
+            h3 Salmon
+            p 1 lb / 16 oz
+            p.price $10.00
+            .quantity
+              button.quantity-btn(onclick="decreaseQuantity(this)") -
+              input.quantity-input(type="number", value="1")
+              button.quantity-btn(onclick="increaseQuantity(this)") +
+            p.total Total: $10.00
+            button(onclick="removeItem(this)") Remove
+        
+        .cart-item
+          img(src="images/SALCTR.png", alt="Salmon")
+          .cart-item-info
+            h3 Salmon
+            p 1 lb / 16 oz
+            p.price $10.00
+            .quantity
+              button.quantity-btn(onclick="decreaseQuantity(this)") -
+              input.quantity-input(type="number", value="2", max="3")
+              button.quantity-btn(onclick="increaseQuantity(this)") +
+            p.total Total: $20.00
+            button Remove
+        
+        .cart-item
+          img(src="images/SALCTR.png", alt="Salmon")
+          .cart-item-info
+            h3 Salmon
+            p 1 lb / 16 oz
+            p.price $10.00
+            .quantity
+              button.quantity-btn(onclick="decreaseQuantity(this)") -
+              input.quantity-input(type="number", value="1")
+              button.quantity-btn(onclick="increaseQuantity(this)") +
+            p.total Total: $10.00
+            button Remove
+        
+        .cart-total
+          h3 Total:
+          p#total-price $42.70 + delivery fees
+          
+          button.checkout-button Checkout
+    
+    footer
+      p 2025 Phil's Fish Market. All rights reserved.
+      p Contact us: contact@philsfishmarket.com

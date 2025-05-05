@@ -1,0 +1,51 @@
+//- 
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the admin-upload.pug file for Phil's Fish Market, this is where the admin can upload products in bulk.
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Admin Upload - Phil's Fish Market
+    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="admin.css")
+    link(rel="icon", href="images/4469206.png", type="image/x-icon")
+    script(src="cart.js", defer)
+  
+  body
+    header
+      h1 Phil's Fish Market
+      .nav-container
+        nav
+          ul.nav-bar
+            li
+              a(href="index.html") Home
+            li
+              a(href="admin-upload.html") Upload
+            li
+              a(href="admin-products.html") Products
+            li
+              a(href="product-edit.html") Product-Edit
+      
+      .search-bar-container
+        input(type="text", placeholder="Search...")
+        button(type="button")
+          img(src="images/image.png", alt="Search Icon")
+    
+    main
+      section.upload
+        h1 Upload bulk product data
+        p Make sure the file is in JSON or CSV format.
+        
+        .upload-icon
+          img(src="images/upload.png")
+        
+        button Submit
+    
+    footer
+      p 2025 Phil's Fish Market. All rights reserved.
+      p Contact us: contact@philsfishmarket.com

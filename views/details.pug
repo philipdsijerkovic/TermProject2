@@ -1,0 +1,50 @@
+//- 
+  Name: Philip Sijerkovic
+  Date: 2/28/2025
+  CSC 372-01
+
+  This is the details.pug file for Phil's Fish Market, this contains the details for a product.
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Details
+    link(rel="stylesheet", href="styles.css")
+    link(rel="icon", href="images/4469206.png", type="image/x-icon")
+  
+  body
+    header
+      h1 Phil's Fish Market
+      .nav-container
+        nav
+          ul.nav-bar
+            li
+              a(href="index.html") Home
+            li
+              a(href="products.html") Products
+            li
+              a(href="cart.html") Cart
+            li
+              a(href="admin-upload.html") Admin View
+      
+      .search-bar-container
+        input(type="text", placeholder="Search...")
+        button(type="button")
+          img(src="images/image.png", alt="Search Icon")
+    
+    main
+      .details-container
+        img(src="images/SALCTR.png")
+        .details-info
+          h2 Salmon
+          p.size 1 lb / 16 oz
+          p.heart ❤️Heart-Healthy❤️
+          p Our Atlantic salmon has a melt-in-your-mouth texture and tender flakes. Caught in Norway and shipped straight to you.
+          p.price $10.00
+          button Add to Cart
+    
+    footer
+      p 2025 Phil's Fish Market. All rights reserved.
+      p Contact us: contact@philsfishmarket.com
