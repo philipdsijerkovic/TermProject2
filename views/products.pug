@@ -71,26 +71,16 @@ html(lang="en")
         h2 Trending
       
       section.grid-container
-        .grid-item
-          img(src="images/SALCTR.png")
+       if trendingProducts && trendingProducts.length
+        each product in trendingProducts
+         .grid-item
+          img(src=product.products_image_url, alt=product.products_name)
           h3
-            a(href="details.html") Salmon
-          p $10.00
+            a(href=`/details/${product.products_id}`) #{product.products_name}
+          p $#{product.products_price.toFixed(2)}
           button Add to Cart
-        
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
-        
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
+       else
+        p No trending products available at the moment.
     
     footer
       p 2025 Phil's Fish Market. All rights reserved.

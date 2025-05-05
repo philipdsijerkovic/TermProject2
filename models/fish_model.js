@@ -37,7 +37,7 @@ function createNew(params) {
 }
 
 function getColumnNames() {
-  let sql = "select name from pragma_table_info('fish');";
+  let sql = "select name from pragma_table_info('products');";
   const columns = db.all(sql);
   let result = columns.map(a => a.name);
   return result;

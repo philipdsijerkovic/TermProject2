@@ -19,7 +19,14 @@ app.use(express.static("public"));
 
 // Routes for Pug views
 app.get("/", (req, res) => {
-  res.render("index"); // Renders views/index.pug
+  const model = require("./models/fish_model"); // Import the model
+  try {
+    const products = model.getAll(); // Fetch all products from the database
+    res.render("index", { products }); // Pass the products to the Pug template
+  } catch (err) {
+    console.error("Error fetching products:", err.message); // debugging section
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.get("/cart", (req, res) => {
@@ -27,7 +34,14 @@ app.get("/cart", (req, res) => {
 });
 
 app.get("/products", (req, res) => {
-  res.render("products"); // Renders views/products.pug
+  const model = require("./models/fish_model"); // Import the model
+  try {
+    const trendingProducts = model.getAllByOneAttribute("featured", 1); // If it's featured, import the product
+    res.render("products", { trendingProducts });  // Render it
+  } catch (err) {
+    console.error("Error fetching trending products:", err.message); // debugging section
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.get("/admin-upload", (req, res) => {

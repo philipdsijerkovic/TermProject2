@@ -43,29 +43,16 @@ html(lang="en")
         img.hero-img-right(src="images/crab.gif", alt="Fish Market")
       
       section.trending
-        h2 Trending Products
+        h2 Our 🔥 Hot 🔥 Products
       
       section.grid-container
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
-        
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
-        
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
+        each product in products
+          .grid-item
+            img(src=product.products_image_url, alt=product.products_name)
+            h3
+              a(href=`/details/${product.products_id}`) #{product.products_name}
+            p $#{product.products_price.toFixed(2)}
+            button Add to Cart
     
     footer
       p 2025 Phil's Fish Market. All rights reserved.
