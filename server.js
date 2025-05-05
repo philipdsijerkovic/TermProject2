@@ -7,14 +7,19 @@ app.use(multer().none());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Set up Pug as the view engine
+app.set("view engine", "pug");
+app.set("views", "./views"); // Make sure your .pug files are in the 'views' folder
+
 const fishRoutes = require("./routes/fish.route");
 const { db_close } = require("./models/db-conn");
 
 app.use(express.static("public"));
 app.use("/api", fishRoutes);
 
+// Example route to render a Pug view (adjust as needed)
 app.get("/", (req, res) => {
-  res.redirect("/api/all");
+  res.render("index"); // Renders views/index.pug
 });
 
 const PORT = process.env.PORT || 3000;
