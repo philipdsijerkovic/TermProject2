@@ -1,6 +1,6 @@
 "use strict";
 const model = require("../models/fish_model");
-
+// Get all products, used for homepage and product page
 function getAll(req, res, next) {
   try {
     res.json(model.getAll());
@@ -9,7 +9,7 @@ function getAll(req, res, next) {
     next(err);
   }
 }
-
+// Get all products by one attribute, used for product page
 function getAllByOneAttribute(req, res, next) {
   let attribute = req.query.attribute;
   let value = req.query.value;
@@ -25,7 +25,7 @@ function getAllByOneAttribute(req, res, next) {
     res.status(400).send("Invalid Request");
   }
 }
-
+// Get one product by id, used for product details page
 function getOneById(req, res, next) {
   try {
     res.json(model.getOneById(req.params.id));
@@ -34,7 +34,7 @@ function getOneById(req, res, next) {
     next(err);
   }
 }
-
+// Deletes the mproduct by id 
 function deleteProduct(req, res, next) {
   try {
     model.deleteProduct(req.params.id); 
@@ -44,7 +44,7 @@ function deleteProduct(req, res, next) {
     next(err);
   }
 }
-
+// Creates a new product, used for admin products
 function createNew(req, res, next) {
   let name = req.body.name;
   let description = req.body.description;
@@ -53,10 +53,10 @@ function createNew(req, res, next) {
   let category_id = parseInt(req.body.category_id);
   let featured = req.body.featured ? 1 : 0; // Convert boolean to 1 or 0
 
-  if (name && price && category_id) { 
+  if (name && price && category_id) {  // Check if required fields are present
     let params = [name, description || null, image_url || null, price, category_id, featured];
     try {
-      res.json(model.createNew(params));
+      res.json(model.createNew(params)); // Call the model function createNew 
     } catch (err) {
       console.error("Error while creating product: ", err.message); 
       next(err);
@@ -65,7 +65,7 @@ function createNew(req, res, next) {
     res.status(400).send("Invalid Request: Missing required fields");
   }
 }
-
+// Adds a product to the cart, used for cart page
 function addCart(req, res, next) {
   const cartId = req.body.cartId;
   const productId = req.body.productId;
@@ -81,7 +81,7 @@ function addCart(req, res, next) {
     }
   }
 }
-
+// Deletes a product from the cart, used for cart page
 function checkout(req, res, next) {
   const cartId = req.body.cartId;
   if (cartId) {
@@ -94,7 +94,7 @@ function checkout(req, res, next) {
     }
   } 
 }
-
+// Updates a product, used for admin products
 function updateProduct(req, res, next) {
   const productId = req.params.id;
   const {
@@ -126,19 +126,7 @@ function updateProduct(req, res, next) {
 // I can't tell if it works 
 function adminBulkUpload(req, res, next) {
   const products = req.body.products;
-  
-  if (Array.isArray(products) && products.length > 0) {
-    try {
-      const results = products.map((product) => {
-        const { name, description, image_url, price, category_id, featured } = product;
-        return model.createNew([name, description, image_url, price, category_id, featured]);
-      });
-      res.json(results);
-    } catch (err) {
-      console.error("Error during bulk upload: ", err.message);
-      next(err);
-    }
-  } 
+  // I can't figure it out 
 }
 
 module.exports = {

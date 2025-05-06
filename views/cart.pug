@@ -39,26 +39,24 @@ html(lang="en")
       section.cart
         h2 Your Shopping Cart
 
-        if cartItems && cartItems.length
+        if cartItems && cartItems.length 
           each item in cartItems
-            .cart-item
+            .cart-item(data-product-id=item.product_id) 
               img(src=item.products_image_url, alt=item.products_name)
-              .cart-item-info
+              .cart-item-info 
                 h3 #{item.products_name}
-                p.price $#{item.products_price.toFixed(2)}
+                p.price $#{item.products_price}
                 .quantity
-                  button.quantity-btn(onclick="decreaseQuantity(this)") -
                   input.quantity-input(type="number", value=item.quantity)
-                  button.quantity-btn(onclick="increaseQuantity(this)") +
-                p.total Total: $#{(item.products_price * item.quantity).toFixed(2)}
-                button(onclick="removeItem(this)") Remove
+                p.total Total: $#{(item.products_price * item.quantity)}
+                button.remove-btn Remove
         else
           p Your cart is empty.
 
         .cart-total
           if cartItems && cartItems.length
             h3 Total:
-            p#total-price $#{cartItems.reduce((total, item) => total + item.products_price * item.quantity, 0).toFixed(2)} + delivery fees
+            p#total-price $#{cartItems.reduce((total, item) => total + item.products_price * item.quantity, 0).toFixed(2)} + delivery fees 
             button.checkout-button Checkout
           else
             p Add some items to your cart to see the total.

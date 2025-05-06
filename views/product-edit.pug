@@ -31,10 +31,6 @@ html(lang="en")
     
     main
       section.products
-        .search-bar-container
-          input(type="text", placeholder="Search...")
-          button(type="button")
-            img(src="images/image.png", alt="Search Icon")
         
         h2 Product Edit
         
@@ -45,14 +41,14 @@ html(lang="en")
               .product-info
                 p Product ID: 
                   strong #{product.products_id}
-                h3
-                  input(type="text", value=product.products_name)
-                p
-                  textarea= product.products_description
+                h3 Product Name: 
+                  input.name-input(type="text", value=product.products_name)
+                p Description: 
+                  textarea.description-input= product.products_description
                 p Category: 
-                  input(type="text", value=product.products_category_id)
+                  input.category-input(type="text", value=product.products_category_id)
                 p Image Path: 
-                  input(type="text", value=product.products_image_url)
+                  input.image-url-input(type="text", value=product.products_image_url)
                 p Price:
                   input.price-input(type="number", value=product.products_price, step="0.01")
                 p Featured:

@@ -13,6 +13,7 @@ html(lang="en")
     title Phil's Fish Market
     link(rel="stylesheet", href="styles.css")
     link(rel="icon", href="images/4469206.png", type="image/x-icon")
+    script(src="cart.js", defer)
   
   body
     header
@@ -52,8 +53,8 @@ html(lang="en")
               img(src=product.products_image_url, alt=product.products_name)
               h3
                 a(href=`/details/${product.products_id}`) #{product.products_name}
-              p $#{product.products_price.toFixed(2)}
-              button Add to Cart
+              p $#{product.products_price}
+              button.add-to-cart-btn(data-product-id=product.products_id) Add to Cart
         else
           p No products available at the moment.
       
@@ -67,8 +68,8 @@ html(lang="en")
           img(src=product.products_image_url, alt=product.products_name)
           h3
             a(href=`/details/${product.products_id}`) #{product.products_name}
-          p $#{product.products_price.toFixed(2)}
-          button Add to Cart
+          p $#{product.products_price}
+          button.add-to-cart-btn(data-product-id=product.products_id) Add to Cart
        else
         p No trending products available at the moment.
     

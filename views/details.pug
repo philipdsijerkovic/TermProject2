@@ -13,6 +13,7 @@ html(lang="en")
     title Details
     link(rel="stylesheet", href="/styles.css")
     link(rel="icon", href="images/4469206.png", type="image/x-icon")
+    script(src="cart.js", defer)
   
   body
     header
@@ -42,8 +43,8 @@ html(lang="en")
           p.size 1 lb / 16 oz
           p.heart ❤️Heart-Healthy❤️
           p #{product.products_description}
-          p.price $#{product.products_price.toFixed(2)}
-          button Add to Cart
+          p.price $#{product.products_price}
+          button.add-to-cart-btn(data-product-id=product.products_id) Add to Cart
     
     footer
       p 2025 Phil's Fish Market. All rights reserved.

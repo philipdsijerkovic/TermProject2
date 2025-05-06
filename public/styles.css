@@ -295,3 +295,30 @@ footer {
     margin-right: 100px;
     width: 25%;
 }
+
+.random-meal img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    justify-content: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.random-meal h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.random-meal h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.random-meal p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}

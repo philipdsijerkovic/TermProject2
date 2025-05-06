@@ -38,39 +38,34 @@ html(lang="en")
     
     main
       section.products
-        .search-bar-container
-          input(type="text", placeholder="Search...")
-          button(type="button")
-            img(src="images/image.png", alt="Search Icon")
         
         h2 Products
-        
-        .product
-          img(src="images/SALCTR.png", alt="Salmon")
-          .product-info
-            p Product ID: 
-              strong 2000
-            h3 Salmon
-            p Our Atlantic salmon has a melt-in-your-mouth texture and tender flakes. Caught in Norway and shipped straight to you.
-            p Category: Seafood
-            p Image path: 
-            button Edit
-            button Delete
-            button Archive
-        
-        .product
-          img(src="images/SALCTR.png", alt="Salmon")
-          .product-info
-            p Product ID: 
-              strong 2000
-            h3 Salmon
-            p Our Atlantic salmon has a melt-in-your-mouth texture and tender flakes. Caught in Norway and shipped straight to you.
-            p Category: Seafood
-            p Image path: 
-            button Edit
-            button Delete
-            button Archive
-    
+
+        form#create-product-form(method="POST", action="/api/admin/products")
+          input(type="text", name="products_name", placeholder="Name", required)
+          input(type="text", name="products_description", placeholder="Description", required)
+          input(type="text", name="products_image_url", placeholder="Image URL", required)
+          input(type="number", name="products_price", placeholder="Price", step="0.01", required) 
+          input(type="text", name="products_category_id", placeholder="Category", required)
+          label
+            input(type="checkbox", name="featured")
+            | Featured
+          button(type="submit") Add
+        // Loop over products and display them
+        if products && products.length
+          each product in products
+            .product(data-product-id=product.products_id)
+              img(src='/' + product.products_image_url, alt=product.products_name)
+              .product-info
+                p Product ID: 
+                  strong #{product.products_id}
+                h3 #{product.products_name}
+                p #{product.products_description}
+                p Category: #{product.products_category_id}
+                p Image path: #{product.products_image_url}
+        else
+          p No products found. 
+    // error checking
     footer
       p 2025 Phil's Fish Market. All rights reserved.
       p Contact us: contact@philsfishmarket.com
