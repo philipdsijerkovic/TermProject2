@@ -36,10 +36,11 @@ app.get("/cart", (req, res) => {
 app.get("/products", (req, res) => {
   const model = require("./models/fish_model"); // Import the model
   try {
-    const trendingProducts = model.getAllByOneAttribute("featured", 1); // If it's featured, import the product
-    res.render("products", { trendingProducts });  // Render it
+    const products = model.getAll(); // Fetch all products
+    const trendingProducts = model.getAllByOneAttribute("featured", 1); // Fetch trending products
+    res.render("products", { products, trendingProducts }); // Pass both to the template
   } catch (err) {
-    console.error("Error fetching trending products:", err.message); // debugging section
+    console.error("Error fetching products:", err.message); // Debugging section
     res.status(500).send("Internal Server Error");
   }
 });

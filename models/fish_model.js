@@ -57,6 +57,22 @@ function addCart(cartId, productId, quantity) {
   return data;
 }
 
+function getCartItems() {
+  let sql = `
+    SELECT 
+      cart_products.cart_id,
+      cart_products.quantity,
+      products.products_id,
+      products.products_name,
+      products.products_image_url,
+      products.products_price
+    FROM cart_products
+    INNER JOIN products ON cart_products.product_id = products.products_id;
+  `;
+  const data = db.run(sql);
+  return data;
+}
+
 function updateProduct(productId, params) {
   const sql = `
     UPDATE products
@@ -102,4 +118,5 @@ module.exports = {
   checkout,
   addCart,
   updateProduct,
+  getCartItems
 };

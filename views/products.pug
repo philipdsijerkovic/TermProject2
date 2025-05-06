@@ -46,26 +46,16 @@ html(lang="en")
         h2 Best-Selling
       
       section.grid-container
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
-        
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
-        
-        .grid-item
-          img(src="images/SALCTR.png")
-          h3
-            a(href="details.html") Salmon
-          p $10.00
-          button Add to Cart
+        if products && products.length
+          each product in products
+            .grid-item
+              img(src=product.products_image_url, alt=product.products_name)
+              h3
+                a(href=`/details/${product.products_id}`) #{product.products_name}
+              p $#{product.products_price.toFixed(2)}
+              button Add to Cart
+        else
+          p No products available at the moment.
       
       section.trending
         h2 Trending
