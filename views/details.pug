@@ -11,7 +11,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Details
-    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="/styles.css")
     link(rel="icon", href="images/4469206.png", type="image/x-icon")
   
   body
@@ -32,17 +32,17 @@ html(lang="en")
       .search-bar-container
         input(type="text", placeholder="Search...")
         button(type="button")
-          img(src="images/image.png", alt="Search Icon")
+          img(src="/images/image.png", alt="Search Icon")
     
     main
       .details-container
-        img(src="images/SALCTR.png")
+        img(src='/' + product.products_image_url, alt=product.products_name)
         .details-info
-          h2 Salmon
+          h2 #{product.products_name}
           p.size 1 lb / 16 oz
           p.heart ❤️Heart-Healthy❤️
-          p Our Atlantic salmon has a melt-in-your-mouth texture and tender flakes. Caught in Norway and shipped straight to you.
-          p.price $10.00
+          p #{product.products_description}
+          p.price $#{product.products_price.toFixed(2)}
           button Add to Cart
     
     footer

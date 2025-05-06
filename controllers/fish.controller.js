@@ -97,16 +97,23 @@ function checkout(req, res, next) {
 
 function updateProduct(req, res, next) {
   const productId = req.params.id;
-  const { name, description, image_url, price, category_id, featured } = req.body;
+  const {
+    products_name,
+    products_description,
+    products_image_url,
+    products_price,
+    products_category_id,
+    featured
+  } = req.body;
 
   if (productId) {
     try {
       const result = model.updateProduct(productId, {
-        name,
-        description,
-        image_url,
-        price,
-        category_id,
+        products_name,
+        products_description,
+        products_image_url,
+        products_price,
+        products_category_id,
         featured,
       });
       res.json(result);
@@ -114,7 +121,7 @@ function updateProduct(req, res, next) {
       console.error("Error while updating product: ", err.message);
       next(err);
     }
-  } 
+  }
 }
 // I can't tell if it works 
 function adminBulkUpload(req, res, next) {

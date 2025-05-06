@@ -10,7 +10,6 @@ app.use(express.json());
 // Set up Pug as the view engine
 app.set("view engine", "pug");
 app.set("views", "./views"); // Make sure your .pug files are in the 'views' folder
-
 const fishRoutes = require("./routes/fish.route");
 const { db_close } = require("./models/db-conn");
 
@@ -30,7 +29,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/cart", (req, res) => {
-  res.render("cart"); // Renders views/cart.pug
+  const model = require("./models/fish_model");
+  const cartItems = model.getCartItems(1); // Fetch cart items for user with ID 1 (in a real app this would be dynamic)
+  res.render("cart", { cartItems });
 });
 
 app.get("/products", (req, res) => {
@@ -54,11 +55,54 @@ app.get("/admin-products", (req, res) => {
 });
 
 app.get("/product-edit", (req, res) => {
-  res.render("product-edit"); // Renders views/product-edit.pug
+  const model = require("./models/fish_model");
+  const products = model.getAll(); // or whatever method fetches all products
+  res.render("product-edit", { products });
 });
 
-app.get("/details", (req, res) => {
-  res.render("details"); // Renders views/details.pug
+app.put("/api/admin/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+  const model = require("./models/fish_model"); // Import the model
+  const updateData = req.body;
+  try {
+    const result = model.updateProduct(productId, updateData);
+    if (result.changes === 0) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+    res.json({ message: "Product updated!", result });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update product." });
+  }
+});
+
+app.delete("/api/admin/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+  const model = require("./models/fish_model"); // Import the model
+  try {
+    const result = model.deleteProduct(productId);
+    if (result.changes === 0) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+    res.json({ message: "Product deleted!", result });
+  } catch (err) {
+    console.error(err); // <--- Add this line
+    res.status(500).json({ error: "Failed to delete product." });
+  }
+});
+
+app.get("/details/:id", (req, res) => {
+  const model = require("./models/fish_model");
+  const productId = parseInt(req.params.id, 10);
+  try {
+    const product = model.getOneById(productId);
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+    res.render("details", { product });
+  } catch (err) {
+    console.error("Error fetching product details:", err.message);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 const PORT = process.env.PORT || 3000;

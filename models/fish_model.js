@@ -22,10 +22,11 @@ function getOneById(id) {
   return item;
 }
 
-function deleteProduct(id){
-  let sql = "DELETE FROM products WHERE products_id =?; ";
+function deleteProduct(id) {
+  db.run("DELETE FROM cart_products WHERE product_id = ?", id);
+  let sql = "DELETE FROM products WHERE products_id = ?;";
   const info = db.run(sql, id);
-return info;
+  return info;
 }
 
 function createNew(params) {
@@ -43,7 +44,7 @@ function getColumnNames() {
   return result;
 }
 
-function checkout() {
+function checkout(cartId) {
   let sql = "DELETE FROM cart_products WHERE cart_id = ?;";
   const data = db.run(sql, cartId);
   return data;
@@ -57,23 +58,26 @@ function addCart(cartId, productId, quantity) {
   return data;
 }
 
-function getCartItems() {
-  let sql = `
-    SELECT 
-      cart_products.cart_id,
-      cart_products.quantity,
-      products.products_id,
-      products.products_name,
-      products.products_image_url,
-      products.products_price
-    FROM cart_products
-    INNER JOIN products ON cart_products.product_id = products.products_id;
+function getCartItems(cartId) {
+  const sql = `
+    SELECT cp.*, p.products_name, p.products_image_url, p.products_price
+    FROM cart_products cp
+    JOIN products p ON cp.product_id = p.products_id
+    WHERE cp.cart_id = ?
   `;
-  const data = db.run(sql);
-  return data;
+  return db.all(sql, cartId);
 }
 
 function updateProduct(productId, params) {
+  const {
+    products_name = null,
+    products_description = null,
+    products_image_url = null,
+    products_price = null,
+    products_category_id = null,
+    featured = null,
+  } = params;
+
   const sql = `
     UPDATE products
     SET 
@@ -85,25 +89,15 @@ function updateProduct(productId, params) {
       featured = ?
     WHERE products_id = ?;
   `;
-  // Default values
-  const defaultValues = {
-    products_name = null,
-    products_description = null,
-    products_image_url = null,
-    products_price = null,
-    products_category_id = null,
-    featured = null,
-  } = params;
-  // Run the query
+  // Pass the fields in the correct order, productId last
   const data = db.run(sql, [
-    productId,
     products_name,
     products_description,
     products_image_url,
     products_price,
     products_category_id,
     featured,
-
+    productId
   ]);
 
   return data; 
